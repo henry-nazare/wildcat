@@ -1,10 +1,10 @@
 test_paren' : (a -> a a) (a) -> a a ;
 test_paren0 :  a -> a a) (a) -> a a ;
-test_paren1: (a -> a a  (a) -> a a ;
-test_paren2: (a -> a a)  a) -> a a ;
-test_paren3: (a -> a a) (a  -> a a ;
-test_paren4:  a -> a a  (a) -> a a ;
-test_paren5: (a -> a a)  a  -> a a ;
+test_paren1 : (a -> a a  (a) -> a a ;
+test_paren2 : (a -> a a)  a) -> a a ;
+test_paren3 : (a -> a a) (a  -> a a ;
+test_paren4 :  a -> a a  (a) -> a a ;
+test_paren5 : (a -> a a)  a  -> a a ;
 test_paren6 :  a -> a a   a  -> a a ;
 
 test_empty' : (a -> a a) (a) -> a a ;
@@ -12,20 +12,20 @@ test_empty0 : (  -> a a) (a) -> a a ;
 test_empty1 : (a -> a a) ( ) -> a a ;
 test_empty2 : (  -> a a) ( ) -> a a ;
 
-test_ident' : (stack a, stack b -> stack a b)  (s a, t b)  -> s a b ;
-test_ident0 : (stack $a, stack  b -> stack  a  b)  (s a, t b)      -> s a b ;
-test_ident1 : (stack  a, stack $b -> stack  a  b)  (s a, t b)      -> s a b ;
-test_ident2 : (stack  a, stack  b -> stack $a  b)  (s a, t b)      -> s a b ;
-test_ident3 : (stack  a, stack  b -> stack  a $b)  (s a, t b)      -> s a b ;
-test_ident4 : (stack  a, stack  b -> stack  a  b)  ($s  a,  t  b)  -> s a b ;
-test_ident5 : (stack  a, stack  b -> stack  a  b)  ( s $a,  t  b)  -> s a b ;
-test_ident6 : (stack  a, stack  b -> stack  a  b)  ( s  a, $t  b)  -> s a b ;
-test_ident7 : (stack  a, stack  b -> stack  a  b)  ( s  a,  t $b)  -> s a b ;
+test_ident' : (stack  a, stack  b -> stack  a  b)  ( s  a,  t  b) -> s a b ;
+test_ident0 : (stack $a, stack  b -> stack  a  b)  ( s  a,  t  b) -> s a b ;
+test_ident1 : (stack  a, stack $b -> stack  a  b)  ( s  a,  t  b) -> s a b ;
+test_ident2 : (stack  a, stack  b -> stack $a  b)  ( s  a,  t  b) -> s a b ;
+test_ident3 : (stack  a, stack  b -> stack  a $b)  ( s  a,  t  b) -> s a b ;
+test_ident4 : (stack  a, stack  b -> stack  a  b)  ($s  a,  t  b) -> s a b ;
+test_ident5 : (stack  a, stack  b -> stack  a  b)  ( s $a,  t  b) -> s a b ;
+test_ident6 : (stack  a, stack  b -> stack  a  b)  ( s  a, $t  b) -> s a b ;
+test_ident7 : (stack  a, stack  b -> stack  a  b)  ( s  a,  t $b) -> s a b ;
 
 test_space' : (a -> a a) (a) -> a a ;
-test_space0: (a -> a a) (a) -> a a ;
-test_space1 :(a -> a a) (a) -> a a ;
-test_space2:(a -> a a) (a) -> a a ;
-test_space3 : (a -> a a)(a) -> a a ;
+test_space0: (a -> a a) (a) ->  a a ;
+test_space1 :(a -> a a) (a) ->  a a ;
+test_space2:(a -> a a) (a) ->   a a ;
+test_space3 : (a -> a a)(a) ->  a a ;
 test_space4 : (a -> a a) (a) -> a a;
 
