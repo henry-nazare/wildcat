@@ -228,7 +228,7 @@ static parser parse_def(parser prs) {
   prs >> parse_word
       >> parse_spaces       >> parse_char(':')
       >> parse_spaces       >> parse_type_fn
-      >> parse_spaces       >> parse_args
+      >> maybe(compose(parse_spaces, parse_args))
       >> parse_maybe_spaces >> parse_string("->")
       >> maybe(compose(parse_maybe_spaces, parse_body));
 
