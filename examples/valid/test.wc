@@ -1,0 +1,6 @@
+test_space' : (a -> a a) (a) -> a a ;
+test_space1 : (a-> a a) (a) -> a a  ;
+test_space2 : (a ->a a) (a) -> a a  ;
+test_space3 : (a -> a a) (a)-> a a  ;
+test_space4 : (a -> a a) (a) ->a a  ;
+

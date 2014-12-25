@@ -26,10 +26,6 @@ test_space' : (a -> a a) (a) -> a a ;
 test_space0: (a -> a a) (a) -> a a ;
 test_space1 :(a -> a a) (a) -> a a ;
 test_space2:(a -> a a) (a) -> a a ;
-test_space3 : (a-> a a) (a) -> a a ;
-test_space4 : (a ->a a) (a) -> a a ;
-test_space5 : (a -> a a)(a) -> a a ;
-test_space6 : (a -> a a) (a)-> a a ;
-test_space7 : (a -> a a) (a) ->a a ;
-test_space8 : (a -> a a) (a) -> a a;
+test_space3 : (a -> a a)(a) -> a a ;
+test_space4 : (a -> a a) (a) -> a a;
 
