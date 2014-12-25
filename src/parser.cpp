@@ -235,8 +235,11 @@ static parser parse_def(parser prs) {
   // With this, unterminated definitions are not incorrectly shown as being
   // on the line after the actual definition. This also avoids unterminated
   // definitions generating two errors each.
-  if (!do_try(prs, compose(parse_spaces, parse_char(';'))))
+  auto errors = prs.get_errors();
+  if (!do_try(prs, compose(parse_spaces, parse_char(';')))) {
+    prs.set_errors(errors);
     prs.set_valid(false);
+  }
   return prs;
 }
 

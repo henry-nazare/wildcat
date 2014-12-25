@@ -35,6 +35,9 @@ public:
   bool is_valid()            const { return valid_;  }
   void set_valid(bool valid)       { valid_ = valid; }
 
+  std::set<error> get_errors() const      { return errors_;   }
+  void set_errors(std::set<error> errors) { errors_ = errors; }
+
   void add_error(error err);
   void merge_errors(parser &prs);
   void clear_errors();
