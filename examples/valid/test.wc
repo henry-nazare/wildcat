@@ -1,10 +1,10 @@
 test_space' : (a -> a a) (a) -> a a ;
-test_space1 : (a-> a a) (a) -> a a  ;
-test_space2 : (a ->a a) (a) -> a a  ;
-test_space3 : (a -> a a) (a)-> a a  ;
-test_space4 : (a -> a a) (a) ->a a  ;
+test_space0 : (a-> a a) (a) -> a a  ;
+test_space1 : (a ->a a) (a) -> a a  ;
+test_space2 : (a -> a a) (a)-> a a  ;
+test_space3 : (a -> a a) (a) ->a a  ;
 
 test_empty' : (a -> a a) (a) -> a a ;
-test_empty2 : (a ->) (a) -> a a ;
-test_empty1 : (a ->) (a) -> ;
+test_empty0 : (a ->) (a) -> ;
+test_empty1 : (a ->) (a) -> a a ;
 
