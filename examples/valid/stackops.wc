@@ -1,0 +1,19 @@
+dup+ : (a     -> a a)   (a)     -> a a   ;
+drop : (a     ->)       (a)     ->       ;
+rot  : (a b c -> b c a) (a b c) -> b c a ;
+swap : (a b   -> b a)   (a b)   -> b a   ;
+nip  : (a b   -> b)     (a b)   -> b     ;
+-rot : (a b c -> c a b) (a b c) -> c a b ;
+tuck : (a b   -> b a b) (a b)   -> b a b ;
+over : (a b   -> a b a) (a b)   -> a b a ;
+
+nip'  : (a b   -> b)     (a b)   ->  a b swap drop ;
+-rot' : (a b c -> c a b) (a b c) ->  a b c rot rot ;
+tuck' : (a b   -> b a b) (a b)   ->  a b dup -rot  ;
+over' : (a b   -> a b a) (a b)   ->  a b swap tuck ;
+
+2dup  : (a b -> a b a b) (a b) -> a b a b ;
+2drop : (a b ->)         (a b) ->         ;
+
+push : (stack, stack b -> stack b) (s, t b) -> s b ;
+
