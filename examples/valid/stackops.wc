@@ -7,10 +7,10 @@ nip  : (a b   -> b)     (a b)   -> b     ;
 tuck : (a b   -> b a b) (a b)   -> b a b ;
 over : (a b   -> a b a) (a b)   -> a b a ;
 
-nip'  : (a b   -> b)     (a b)   ->  a b swap drop ;
--rot' : (a b c -> c a b) (a b c) ->  a b c rot rot ;
-tuck' : (a b   -> b a b) (a b)   ->  a b dup -rot  ;
-over' : (a b   -> a b a) (a b)   ->  a b swap tuck ;
+nip'  : (a b   -> b)     (a b)   -> a b swap drop ;
+-rot' : (a b c -> c a b) (a b c) -> a b c rot rot ;
+tuck' : (a b   -> b a b) (a b)   -> a b dup -rot  ;
+over' : (a b   -> a b a) (a b)   -> a b swap tuck ;
 
 nip''  : (a b   -> b)     -> swap drop ;
 -rot'' : (a b c -> c a b) -> rot rot   ;
