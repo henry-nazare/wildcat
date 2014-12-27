@@ -1,9 +1,13 @@
 #pragma once
 
+#include "construct.h"
+#include "rtti.h"
 #include "scanner.h"
 #include "stream.h"
 
+#include <ostream>
 #include <set>
+#include <stack>
 #include <string>
 
 class parser {
@@ -48,6 +52,30 @@ public:
   void print_errors(std::ostream &os)                                   const;
   void print_error_unterminated(std::ostream &os, stream::location loc) const;
 
+  void add_construct(construct *c);
+
+  // Get the construct at the top of the stack and make sure it's of the given
+  // type.
+  template<typename T>
+  T *get_construct() {
+    if (T *t = dyn_cast<T>(cons_.top())) {
+      cons_.pop();
+      return t;
+    }
+    return nullptr;
+  }
+
+  // Get the constructs at the top of the stack with the given type.
+  template<typename T>
+  std::vector<T*> gather_constructs() {
+    std::vector<T*> vec;
+    while (!cons_.empty() && isa<T>(cons_.top())) {
+      T *t = cast<T>(cons_.top()); cons_.pop();
+      vec.push_back(t);
+    }
+    return vec;
+  }
+
   // Advances the stream to the next definition.
   void advance();
   bool parse();
@@ -59,8 +87,9 @@ public:
   friend parser& operator<<(parser &prs, parser new_prs);
 
 private:
-  stream          stream_;
-  bool            valid_;
-  std::set<error> errors_;
+  stream                 stream_;
+  bool                   valid_;
+  std::set<error>        errors_;
+  std::stack<construct*> cons_;
 };
 
