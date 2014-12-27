@@ -147,8 +147,8 @@ static parser_pair_ty parse_eof(parser prs) {
   return parser_pair_ty(prs, nullptr);
 }
 
-static parser parse_comma_sep(parser &prs,
-                              parser_pair_ty (*run)(parser)) {
+static parser &parse_comma_sep(parser &prs,
+                               parser_pair_ty (*run)(parser)) {
   DEBUG(std::cout << "parse_comma_sep\n");
   if (prs >> run)
     while (do_try(prs, compose(parse_maybe_spaces, parse_char(','))))
@@ -157,8 +157,8 @@ static parser parse_comma_sep(parser &prs,
   return prs;
 }
 
-static parser parse_space_sep(parser &prs,
-                              parser_pair_ty (*run)(parser)) {
+static parser& parse_space_sep(parser &prs,
+                               parser_pair_ty (*run)(parser)) {
   DEBUG(std::cout << "parse_space_sep\n");
   if (prs >> run)
     while (do_try(prs, compose(parse_spaces, run)));
@@ -186,22 +186,20 @@ static parser_pair_ty parse_type_id(parser prs) {
 
 static parser_pair_ty parse_type_compound(parser prs) {
   DEBUG(std::cout << "parse_type_compound\n");
-  auto ret_prs = parse_space_sep(prs, parse_type_id);
-  if (ret_prs) {
-    auto list = ret_prs.gather_constructs<construct_type_id>();
-    return parser_pair_ty(ret_prs, new construct_type_compound(list));
+  if (parse_space_sep(prs, parse_type_id)) {
+    auto list = prs.gather_constructs<construct_type_id>();
+    return parser_pair_ty(prs, new construct_type_compound(list));
   }
-  return parser_pair_ty(ret_prs, nullptr);
+  return parser_pair_ty(prs, nullptr);
 }
 
 static parser_pair_ty parse_type_list(parser prs) {
   DEBUG(std::cout << "parse_type_list\n");
-  auto ret_prs = parse_comma_sep(prs, parse_type_compound);
-  if (ret_prs) {
-    auto list = ret_prs.gather_constructs<construct_type_compound>();
-    return parser_pair_ty(ret_prs, new construct_type_list(list));
+  if (parse_comma_sep(prs, parse_type_compound)) {
+    auto list = prs.gather_constructs<construct_type_compound>();
+    return parser_pair_ty(prs, new construct_type_list(list));
   }
-  return parser_pair_ty(ret_prs, nullptr);
+  return parser_pair_ty(prs, nullptr);
 }
 
 static parser_pair_ty parse_type_fn(parser prs) {
@@ -230,22 +228,20 @@ static parser_pair_ty parse_arg_id(parser prs) {
 
 static parser_pair_ty parse_arg_compound(parser prs) {
   DEBUG(std::cout << "parse_arg_compound\n");
-  auto ret_prs = parse_space_sep(prs, parse_arg_id);
-  if (ret_prs) {
-    auto list = ret_prs.gather_constructs<construct_arg_id>();
-    return parser_pair_ty(ret_prs, new construct_arg_compound(list));
+  if (parse_space_sep(prs, parse_arg_id)) {
+    auto list = prs.gather_constructs<construct_arg_id>();
+    return parser_pair_ty(prs, new construct_arg_compound(list));
   }
-  return parser_pair_ty(ret_prs, nullptr);
+  return parser_pair_ty(prs, nullptr);
 }
 
 static parser_pair_ty parse_arg_list(parser prs) {
   DEBUG(std::cout << "parse_arg_list\n");
-  auto ret_prs = parse_comma_sep(prs, parse_arg_compound);
-  if (ret_prs) {
-    auto list = ret_prs.gather_constructs<construct_arg_compound>();
-    return parser_pair_ty(ret_prs, new construct_arg_list(list));
+  if (parse_comma_sep(prs, parse_arg_compound)) {
+    auto list = prs.gather_constructs<construct_arg_compound>();
+    return parser_pair_ty(prs, new construct_arg_list(list));
   }
-  return parser_pair_ty(ret_prs, nullptr);
+  return parser_pair_ty(prs, nullptr);
 }
 
 static parser_pair_ty parse_args(parser prs) {
@@ -259,12 +255,11 @@ static parser_pair_ty parse_args(parser prs) {
 
 static parser_pair_ty parse_body(parser prs) {
   DEBUG(std::cout << "parse_body\n");
-  auto ret_prs = parse_space_sep(prs, parse_word);
-  if (ret_prs) {
-    auto list = ret_prs.gather_constructs<construct_word>();
-    return parser_pair_ty(ret_prs, new construct_body(list));
+  if (parse_space_sep(prs, parse_word)) {
+    auto list = prs.gather_constructs<construct_word>();
+    return parser_pair_ty(prs, new construct_body(list));
   }
-  return parser_pair_ty(ret_prs, nullptr);
+  return parser_pair_ty(prs, nullptr);
 }
 
 static parser_pair_ty parse_def(parser prs) {
