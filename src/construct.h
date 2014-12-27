@@ -31,6 +31,7 @@ private:
 template<typename T>
 class construct_vec : public construct {
 public:
+  construct_vec(construct::type ty) : construct(ty) { }
   construct_vec(construct::type ty, std::vector<T*> list)
     : construct(ty), list_(list) {
   }
@@ -91,6 +92,7 @@ private:
 
 class construct_body : public construct_vec<construct_word> {
 public:
+  construct_body() : construct_vec(type::BODY) { }
   construct_body(std::vector<construct_word*> list)
     : construct_vec(type::BODY, list) {
   }
@@ -120,6 +122,7 @@ private:
 class construct_type_compound
   : public construct_vec<construct_type_id> {
 public:
+  construct_type_compound() : construct_vec(type::TYPE_COMPOUND) { }
   construct_type_compound(std::vector<construct_type_id*> list)
     : construct_vec(type::TYPE_COMPOUND, list) {
   }
@@ -135,6 +138,7 @@ private:
 class construct_type_list
   : public construct_vec<construct_type_compound> {
 public:
+  construct_type_list() : construct_vec(type::TYPE_LIST) { }
   construct_type_list(std::vector<construct_type_compound*> list)
     : construct_vec(type::TYPE_LIST, list) {
   }
@@ -182,6 +186,7 @@ private:
 class construct_arg_compound
   : public construct_vec<construct_arg_id> {
 public:
+  construct_arg_compound() : construct_vec(type::ARG_COMPOUND) { }
   construct_arg_compound(std::vector<construct_arg_id*> list)
     : construct_vec(type::ARG_COMPOUND, list) {
   }
@@ -197,6 +202,7 @@ private:
 class construct_arg_list
   : public construct_vec<construct_arg_compound> {
 public:
+  construct_arg_list() : construct_vec(type::ARG_LIST) { }
   construct_arg_list(std::vector<construct_arg_compound*> list)
     : construct_vec(type::ARG_LIST, list) {
   }
