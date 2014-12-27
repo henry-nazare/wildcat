@@ -217,15 +217,17 @@ private:
 
 class construct_def : public construct {
 public:
-  construct_def(construct_type_fn *type, construct_arg_list *args,
-                construct_body *body)
-    : construct(type::DEF), type_(type), args_(args), body_(body) {
+  construct_def(construct_word *name, construct_type_fn *type,
+                construct_arg_list *args, construct_body *body)
+    : construct(type::DEF), name_(name), type_(type),
+      args_(args), body_(body) {
   }
 
   static bool classof(const construct *c) {
     return c->get_ty() == type::DEF;
   }
 
+  construct_word     *get_name() const { return name_; }
   construct_type_fn  *get_type() const { return type_; }
   construct_arg_list *get_args() const { return args_; }
   construct_body     *get_body() const { return body_; }
@@ -233,6 +235,7 @@ public:
 private:
   virtual void print(std::ostream &os) const;
 
+  construct_word     *name_;
   construct_type_fn  *type_;
   construct_arg_list *args_;
   construct_body     *body_;

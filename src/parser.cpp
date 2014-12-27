@@ -287,7 +287,8 @@ static parser_pair_ty parse_def(parser prs) {
     auto args = prs.get_construct<construct_arg_list>();
     if (!args) args = new construct_arg_list();
     auto type = prs.get_construct<construct_type_fn>();
-    return parser_pair_ty(prs, new construct_def(type, args, body));
+    auto name = prs.get_construct<construct_word>();
+    return parser_pair_ty(prs, new construct_def(name, type, args, body));
   }
   return parser_pair_ty(prs, nullptr);
 }

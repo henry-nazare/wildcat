@@ -10,7 +10,8 @@ void construct_string::print(std::ostream &os) const {
 }
 
 void construct_def::print(std::ostream &os) const {
-  os << "[def, " << *type_ << ", " << *args_ << ", " << *body_ << "]";
+  os << "[def, " << *name_ << ", " << *type_ << ", " << *args_
+     << ", " << *body_ << "]";
 }
 
 void construct_type_fn::print(std::ostream &os) const {
